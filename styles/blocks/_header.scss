@@ -1,0 +1,69 @@
+.header {
+  width: 100%;
+  height: 900px;
+  background-image: url(../../images/pietro1.jpg);
+  background-size: cover;
+  background-position: 40%;
+  filter: brightness(70%);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+
+  &__menu {
+    margin-left: 145px;
+    margin-top: 52px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 1620px;
+
+    &-list {
+      display: flex;
+      font-size: 20px;
+      column-gap: 30px;
+    }
+  }
+
+  &__menu-search {
+    display: flex;
+    align-items: center;
+    button {
+      margin-left: 24px;
+      background-color: black;
+      color: #fff;
+      font-family: var(--font5);
+      font-weight: 700;
+      font-size: 16px;
+      letter-spacing: 0.08em;
+      border-radius: 2px;
+      padding: 10px 40px;
+      height: 54px;
+    }
+  }
+
+  &__middle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 285px;
+    font-family: var(--second-family);
+    &-title {
+      text-transform: uppercase;
+      letter-spacing: 0.01em;
+    }
+    &-line2 {
+      font-size: 36px;
+      line-height: 30px;
+    }
+    button {
+      font-family: var(--font-family);
+      font-weight: 700;
+      font-size: 20px;
+      margin-top: 40px;
+      border: 2px solid #fff;
+      border-radius: 2px;
+      padding: 15px 51px;
+    }
+  }
+}

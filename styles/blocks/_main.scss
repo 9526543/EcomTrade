@@ -1,0 +1,23 @@
+main {
+  margin-left: 145px;
+  margin-right: 93px;
+  margin-top: 41px;
+}
+.socials {
+  &__list {
+    display: flex;
+    align-items: center;
+    column-gap: 16px;
+    justify-content: right;
+  }
+  &__item {
+    display: flex;
+    align-items: center;
+    column-gap: 4px;
+    span {
+      font-family: var(--third-family);
+      font-size: 12px;
+      font-weight: 300;
+    }
+  }
+}

@@ -1,0 +1,811 @@
+@charset "UTF-8";
+/**
+  Нормализация блочной модели
+ */
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+/**
+    Убираем внутренние отступы слева тегам списков,
+    у которых есть атрибут class
+   */
+:where(ul, ol):where([class]) {
+  padding-left: 0;
+}
+
+/**
+    Убираем внешние отступы body и двум другим тегам,
+    у которых есть атрибут class
+   */
+body,
+:where(blockquote, figure):where([class]) {
+  margin: 0;
+}
+
+/**
+    Убираем внешние отступы вертикали нужным тегам,
+    у которых есть атрибут class
+   */
+:where(h1, h2, h3, h4, h5, h6, p, ul, ol, dl):where([class]) {
+  margin-block: 0;
+}
+
+:where(dd[class]) {
+  margin-left: 0;
+}
+
+:where(fieldset[class]) {
+  margin-left: 0;
+  padding: 0;
+  border: none;
+}
+
+/**
+    Убираем стандартный маркер маркированному списку,
+    у которого есть атрибут class
+   */
+:where(ul[class]) {
+  list-style: none;
+}
+
+:where(address[class]) {
+  font-style: normal;
+}
+
+/**
+    Обнуляем вертикальные внешние отступы параграфа,
+    объявляем локальную переменную для внешнего отступа вниз,
+    чтобы избежать взаимодействие с более сложным селектором
+   */
+p {
+  --paragraphMarginBottom: 24px;
+  margin-block: 0;
+}
+
+/**
+    Внешний отступ вниз для параграфа без атрибута class,
+    который расположен не последним среди своих соседних элементов
+   */
+p:where(:not([class]):not(:last-child)) {
+  margin-bottom: var(--paragraphMarginBottom);
+}
+
+/**
+    Упрощаем работу с изображениями и видео
+   */
+img,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/**
+    Наследуем свойства шрифт для полей ввода
+   */
+input,
+textarea,
+select,
+button {
+  font: inherit;
+}
+
+html {
+  /**
+      Пригодится в большинстве ситуаций
+      (когда, например, нужно будет "прижать" футер к низу сайта)
+     */
+  height: 100%;
+  /**
+      Убираем скачок интерфейса по горизонтали
+      при появлении / исчезновении скроллбара
+     */
+  scrollbar-gutter: stable;
+}
+
+/**
+    Плавный скролл
+   */
+html,
+:has(:target) {
+  scroll-behavior: smooth;
+}
+
+body {
+  /**
+      Пригодится в большинстве ситуаций
+      (когда, например, нужно будет "прижать" футер к низу сайта)
+     */
+  min-height: 100%;
+  /**
+      Унифицированный интерлиньяж
+     */
+  line-height: 1.5;
+}
+
+/**
+    Нормализация высоты элемента ссылки при его инспектировании в DevTools
+   */
+a:where([class]) {
+  display: inline-flex;
+}
+
+/**
+    Курсор-рука при наведении на элемент
+   */
+button,
+label {
+  cursor: pointer;
+}
+
+/**
+    Приводим к единому цвету svg-элементы
+    (за исключением тех, у которых уже указан
+    атрибут fill со значением 'none' или начинается с 'url')
+   */
+:where([fill]:not([fill=none], [fill^=url])) {
+  fill: currentColor;
+}
+
+/**
+    Приводим к единому цвету svg-элементы
+    (за исключением тех, у которых уже указан
+    атрибут stroke со значением 'none')
+   */
+:where([stroke]:not([stroke=none], [stroke^=url])) {
+  stroke: currentColor;
+}
+
+/**
+    Чиним баг задержки смены цвета при взаимодействии с svg-элементами
+   */
+svg *[fill] {
+  fill: currentColor;
+}
+
+svg *[stroke] {
+  stroke: currentColor;
+}
+
+svg * {
+  transition-property: fill, stroke;
+}
+
+/**
+    Приведение рамок таблиц в классический 'collapse' вид
+   */
+:where(table) {
+  border-collapse: collapse;
+  border-color: currentColor;
+}
+
+/**
+    Удаляем все анимации и переходы для людей,
+    которые предпочитают их не использовать
+   */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+@font-face {
+  font-family: "Europa-Bold";
+  src: url("../fonts/Europa-Bold.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Europa-Regular";
+  src: url("../fonts/Europa-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Roboto";
+  src: url("../fonts/Roboto.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Segoe UI";
+  src: url("../fonts/Segoe.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "EuropaNuova-Regular";
+  src: url("../fonts/Europa-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Sansita";
+  src: url("../fonts/Sansita-Bold.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "EuropaNuova-Bold";
+  src: url("../fonts/EuropaNuovaBold.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("../fonts/Poppins.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+:root {
+  --font-family: "Europa-Bold", sans-serif;
+  --second-family: "Europa-Regular", sans-serif;
+  --third-family: "Roboto", sans-serif;
+  --font3: "Segoe UI", sans-serif;
+  --font4: "EuropaNuova-Regular", sans-serif;
+  --font5: "Sansita", sans-serif;
+  --font6: "EuropaNuova-Bold", sans-serif;
+  --font7: "Poppins", sans-serif;
+  --container-width: 1997px;
+  --transition-duration: 0.2s;
+  --text-color-dark: #121416;
+  --color-gray: #6c757d;
+}
+
+body {
+  font-family: var(--font-family);
+  font-weight: 400;
+}
+
+.content {
+  margin-inline: auto;
+  width: 1997px;
+}
+
+a,
+button,
+input,
+textarea,
+svg * {
+  transition-duration: var(--transition-duration);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 500;
+}
+
+h1 {
+  font-size: 64px;
+}
+
+h2 {
+  font-size: 42px;
+}
+
+.header {
+  width: 100%;
+  height: 900px;
+  background-image: url(../../images/pietro1.jpg);
+  background-size: cover;
+  background-position: 40%;
+  filter: brightness(70%);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+.header__menu {
+  margin-left: 145px;
+  margin-top: 52px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 1620px;
+}
+.header__menu-list {
+  display: flex;
+  font-size: 20px;
+  -moz-column-gap: 30px;
+       column-gap: 30px;
+}
+.header__menu-search {
+  display: flex;
+  align-items: center;
+}
+.header__menu-search button {
+  margin-left: 24px;
+  background-color: black;
+  color: #fff;
+  font-family: var(--font5);
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 0.08em;
+  border-radius: 2px;
+  padding: 10px 40px;
+  height: 54px;
+}
+.header__middle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 285px;
+  font-family: var(--second-family);
+}
+.header__middle-title {
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+}
+.header__middle-line2 {
+  font-size: 36px;
+  line-height: 30px;
+}
+.header__middle button {
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 20px;
+  margin-top: 40px;
+  border: 2px solid #fff;
+  border-radius: 2px;
+  padding: 15px 51px;
+}
+
+main {
+  margin-left: 145px;
+  margin-right: 93px;
+  margin-top: 41px;
+}
+
+.socials__list {
+  display: flex;
+  align-items: center;
+  -moz-column-gap: 16px;
+       column-gap: 16px;
+  justify-content: right;
+}
+.socials__item {
+  display: flex;
+  align-items: center;
+  -moz-column-gap: 4px;
+       column-gap: 4px;
+}
+.socials__item span {
+  font-family: var(--third-family);
+  font-size: 12px;
+  font-weight: 300;
+}
+
+.threeblocks {
+  margin-top: 41px;
+}
+.threeblocks__list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  -moz-column-gap: 40px;
+       column-gap: 40px;
+}
+.threeblocks__item {
+  height: 788px;
+}
+.threeblocks__item-image {
+  width: 560px;
+  height: 420px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  filter: brightness(70%);
+}
+.threeblocks__item-links {
+  margin-top: 30px;
+  margin-left: 30px;
+  position: absolute;
+  display: flex;
+  z-index: 10;
+}
+.threeblocks__item-link {
+  -webkit-backdrop-filter: blur(6px);
+          backdrop-filter: blur(6px);
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-weight: 700;
+  font-size: 20px;
+  border-radius: 4px;
+  padding: 8px 10px;
+  margin-right: 4px;
+}
+.threeblocks__item .link-svg {
+  -webkit-backdrop-filter: blur(6px);
+          backdrop-filter: blur(6px);
+  background: rgba(255, 255, 255, 0.2);
+  margin-left: 188px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.threeblocks__item .link-svg .playsvg {
+  margin-left: 5px;
+}
+.threeblocks__item-description {
+  margin-top: 35px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  row-gap: 25px;
+  width: 549px;
+}
+.threeblocks__item-description-title {
+  font-family: var(--font-family);
+  font-weight: 700;
+  line-height: 95%;
+  color: var(--text-color-dark);
+}
+.threeblocks__item-description-imageblock {
+  display: flex;
+  align-items: center;
+}
+.threeblocks__item-description-imageblock-image {
+  border-radius: 50%;
+}
+.threeblocks__item-description-imageblock-name {
+  margin-left: 3px;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 167%;
+  color: var(--text-color-dark);
+}
+.threeblocks__item-description-imageblock-line {
+  width: 36px;
+  height: 1px;
+  background: rgba(108, 117, 125, 0.4);
+  margin-inline: 10px;
+}
+.threeblocks__item-description-imageblock-date {
+  font-family: var(--font4);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 222%;
+  color: var(--color-gray);
+}
+.threeblocks__item-description-imageblock-point {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(108, 117, 125, 0.4);
+  margin-inline: 10px;
+}
+.threeblocks__item-description-imageblock-share {
+  color: var(--color-gray);
+}
+.threeblocks__item-description-imageblock-sharetext {
+  font-family: var(--font4);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 222%;
+  color: var(--color-gray);
+  margin-left: 4px;
+}
+.threeblocks__item-description-paragraph {
+  font-family: var(--second-family);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 150%;
+  color: var(--color-gray);
+}
+.threeblocks__item-description-view {
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 167%;
+  color: var(--text-color-dark);
+  text-decoration: underline;
+  text-underline-offset: 10px;
+}
+
+.bigpost {
+  width: 1760px;
+  height: 600px;
+  margin-top: 90px;
+  position: relative;
+}
+.bigpost__image {
+  height: 600px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: left;
+     object-position: left;
+  filter: brightness(60%);
+  opacity: 0.85;
+}
+.bigpost__message {
+  width: 987px;
+  position: absolute;
+  z-index: 10;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+}
+.bigpost__message-travel {
+  -webkit-backdrop-filter: blur(6px);
+          backdrop-filter: blur(6px);
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  padding: 0px 10px;
+  font-weight: 700;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+.bigpost__message-title {
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 95%;
+  letter-spacing: -0.04em;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.bigpost__message-desc {
+  width: 750px;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 112%;
+  text-align: center;
+  color: #e5e5e5;
+  margin-bottom: 30px;
+}
+.bigpost__message-button {
+  font-family: var(--font6);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 120%;
+  color: #7a65e1;
+  width: 320px;
+  height: 64px;
+  padding: 8px;
+  border: 1px solid #7f7d85;
+  border-radius: 2px;
+}
+
+.destination {
+  margin-top: 178px;
+}
+.destination__title {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 62%;
+  color: var(--text-color-dark);
+  margin-bottom: 16px;
+}
+.destination__paragraph {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 125%;
+  color: var(--text-color-dark);
+}
+.destination__list {
+  margin-top: 46px;
+  display: flex;
+  -moz-column-gap: 40px;
+       column-gap: 40px;
+}
+.destination__item {
+  position: relative;
+  width: 320px;
+  height: 260px;
+}
+.destination__item-message {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  position: absolute;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 117%;
+  text-align: center;
+  color: #fff;
+  width: 100%;
+}
+.destination__item-image {
+  height: 260px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  filter: brightness(70%);
+}
+
+.blog {
+  margin-top: 198px;
+  height: 615px;
+}
+.blog_categmenu {
+  height: 38px;
+  position: relative;
+}
+.blog__categories {
+  display: flex;
+  -moz-column-gap: 24px;
+       column-gap: 24px;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 140%;
+  letter-spacing: 0.03em;
+  color: var(--color-dark);
+}
+.blog__category {
+  padding-bottom: 15px;
+}
+.blog__category:hover {
+  border-bottom: 2px solid black;
+  cursor: pointer;
+  z-index: 10;
+}
+.blog__underline {
+  position: absolute;
+  width: 1760px;
+  height: 2px;
+  background-color: #d6d6d6;
+  top: 43px;
+}
+.blog__blocks {
+  display: flex;
+  margin-top: 31px;
+}
+.blog__firstblock {
+  width: 1023px;
+  height: 560px;
+  border: 1px solid #d6d6d6;
+  display: flex;
+  padding-top: 25px;
+}
+.blog__firstblock-left {
+  margin-left: 21px;
+  width: 601px;
+}
+.blog__firstblock-left-date {
+  margin-top: 30px;
+  font-family: var(--font7);
+  font-weight: 500;
+  font-size: 12px;
+  color: #6e6e6e;
+}
+.blog__firstblock-left-title {
+  margin-top: 15px;
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--color-dark);
+}
+.blog__firstblock-left-paragraph {
+  margin-top: 15px;
+  font-family: var(--font7);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+  color: #6e6e6e;
+}
+.blog__firstblock-left-view {
+  margin-top: 15px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 250%;
+  color: var(--color-dark);
+  text-decoration: underline;
+  text-underline-offset: 10px;
+}
+.blog__firstblock-right {
+  margin-left: 39px;
+  width: 340px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 30px;
+}
+.blog__firstblock-right-item {
+  display: flex;
+}
+.blog__firstblock-right-item-text {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+  row-gap: 10px;
+}
+.blog__firstblock-right-item-name {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 137%;
+  color: var(--color-dark);
+}
+.blog__firstblock-right-item-date {
+  font-family: var(--second-family);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 143%;
+  letter-spacing: 0.02em;
+  color: var(--color-gray);
+}
+.blog__secondblock {
+  width: 680px;
+  height: 560px;
+  border: 1px solid #d6d6d6;
+  margin-left: 49px;
+  padding-top: 14px;
+  padding-left: 42px;
+}
+.blog__secondblock-title {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 156%;
+  letter-spacing: 0.03em;
+  color: var(--color-dark);
+  margin-bottom: 20px;
+}
+.blog__secondblock-list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 46px;
+}
+.blog__secondblock-item {
+  display: flex;
+  -moz-column-gap: 38px;
+       column-gap: 38px;
+}
+.blog__secondblock-item-text {
+  width: 312px;
+}
+.blog__secondblock-item-name {
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--color-dark);
+}
+.blog__secondblock-item-date {
+  margin-top: 24px;
+  font-family: var(--second-family);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 127%;
+  letter-spacing: 0.02em;
+  color: var(--color-dark);
+}
+
+.footer {
+  height: 216px;
+  background-color: black;
+  margin-top: 128px;
+}
+.footer__signature {
+  font-family: var(--second-family);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 200%;
+  color: #fff;
+  padding-top: 88px;
+  margin-left: 124px;
+}
+.footer__signature span {
+  font-family: var(--font6);
+}/*# sourceMappingURL=styles.css.map */
