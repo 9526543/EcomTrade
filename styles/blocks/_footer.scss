@@ -2,16 +2,22 @@
   height: 216px;
   background-color: black;
   margin-top: 128px;
+  display: flex;
+  padding-top: 88px;
+  font-family: var(--second-family);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 200%;
+  color: #fff;
   &__signature {
-    font-family: var(--second-family);
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 200%;
-    color: #fff;
-    padding-top: 88px;
     margin-left: 124px;
     span {
       font-family: var(--font6);
     }
+  }
+  &__link {
+    color: #fff;
+    font-weight: 700;
+    margin-left: 1200px;
   }
 }
