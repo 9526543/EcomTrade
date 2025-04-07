@@ -13,7 +13,6 @@
     font-size: 20px;
     line-height: 140%;
     letter-spacing: 0.03em;
-    color: var(--color-dark);
   }
 
   &__category {
@@ -60,7 +59,6 @@
         margin-top: 15px;
         font-weight: 700;
         font-size: 18px;
-        color: var(--color-dark);
       }
 
       &-paragraph {
@@ -76,7 +74,6 @@
         font-weight: 700;
         font-size: 16px;
         line-height: 250%;
-        color: var(--color-dark);
         text-decoration: underline;
         text-underline-offset: 10px;
       }
@@ -100,7 +97,6 @@
           font-weight: 700;
           font-size: 18px;
           line-height: 137%;
-          color: var(--color-dark);
         }
         &-date {
           font-family: var(--second-family);
@@ -126,7 +122,6 @@
       font-size: 18px;
       line-height: 156%;
       letter-spacing: 0.03em;
-      color: var(--color-dark);
       margin-bottom: 20px;
     }
     &-list {
@@ -143,7 +138,6 @@
       &-name {
         font-weight: 700;
         font-size: 18px;
-        color: var(--color-dark);
       }
       &-date {
         margin-top: 24px;
@@ -152,7 +146,6 @@
         font-size: 12px;
         line-height: 127%;
         letter-spacing: 0.02em;
-        color: var(--color-dark);
       }
     }
   }

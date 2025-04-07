@@ -270,6 +270,7 @@ svg * {
 body {
   font-family: var(--font-family);
   font-weight: 400;
+  color: var(--color-dark);
 }
 
 .content {
@@ -664,7 +665,6 @@ main {
   font-size: 20px;
   line-height: 140%;
   letter-spacing: 0.03em;
-  color: var(--color-dark);
 }
 .blog__category {
   padding-bottom: 15px;
@@ -707,7 +707,6 @@ main {
   margin-top: 15px;
   font-weight: 700;
   font-size: 18px;
-  color: var(--color-dark);
 }
 .blog__firstblock-left-paragraph {
   margin-top: 15px;
@@ -722,7 +721,6 @@ main {
   font-weight: 700;
   font-size: 16px;
   line-height: 250%;
-  color: var(--color-dark);
   text-decoration: underline;
   text-underline-offset: 10px;
 }
@@ -746,7 +744,6 @@ main {
   font-weight: 700;
   font-size: 18px;
   line-height: 137%;
-  color: var(--color-dark);
 }
 .blog__firstblock-right-item-date {
   font-family: var(--second-family);
@@ -769,7 +766,6 @@ main {
   font-size: 18px;
   line-height: 156%;
   letter-spacing: 0.03em;
-  color: var(--color-dark);
   margin-bottom: 20px;
 }
 .blog__secondblock-list {
@@ -788,7 +784,6 @@ main {
 .blog__secondblock-item-name {
   font-weight: 700;
   font-size: 18px;
-  color: var(--color-dark);
 }
 .blog__secondblock-item-date {
   margin-top: 24px;
@@ -797,7 +792,6 @@ main {
   font-size: 12px;
   line-height: 127%;
   letter-spacing: 0.02em;
-  color: var(--color-dark);
 }
 
 .footer {
