@@ -308,15 +308,14 @@ h2 {
 .header {
   width: 100%;
   height: 900px;
-  background-image: url(../../images/headerBG.jpg);
-  background-size: cover;
-  background-position: 40%;
   filter: brightness(70%);
   color: #fff;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 .header__menu {
+  position: absolute;
   margin-left: 145px;
   margin-top: 52px;
   display: flex;
@@ -347,11 +346,15 @@ h2 {
   height: 54px;
 }
 .header__middle {
+  position: absolute;
+  width: 1289px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 285px;
   font-family: var(--second-family);
 }
 .header__middle-title {
