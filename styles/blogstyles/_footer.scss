@@ -1,0 +1,22 @@
+.footer {
+  height: 216px;
+  background-color: black;
+  display: flex;
+  padding-top: 88px;
+  font-family: var(--second-family);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 200%;
+  color: #fff;
+  &__signature {
+    margin-left: 124px;
+    span {
+      font-family: var(--font6);
+    }
+  }
+  &__link {
+    color: #fff;
+    font-weight: 700;
+    margin-left: 1200px;
+  }
+}

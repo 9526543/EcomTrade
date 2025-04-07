@@ -321,10 +321,12 @@ h2 {
 .header__bg {
   filter: brightness(70%);
 }
-.header__menu {
+.header__block {
   position: absolute;
   margin-left: 143px;
   margin-top: 36px;
+}
+.header__menu {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -336,6 +338,14 @@ h2 {
   -moz-column-gap: 30px;
        column-gap: 30px;
 }
+.header__breadcrumbs {
+  margin-top: 32px;
+  font-weight: 700;
+  font-size: 14px;
+}
+.header__breadcrumbs svg {
+  padding-top: 5px;
+}
 .header__menu-search {
   display: flex;
   align-items: center;
@@ -343,7 +353,6 @@ h2 {
 .header__menu-search button {
   margin-left: 24px;
   background-color: black;
-  color: #fff;
   font-family: var(--font5);
   font-weight: 700;
   font-size: 16px;
@@ -351,12 +360,77 @@ h2 {
   border-radius: 2px;
   padding: 10px 40px;
   height: 54px;
+  color: #fff;
+}
+.header__middle {
+  width: 1084px;
+  height: 306px;
+  margin-top: 294px;
+  margin-left: 116px;
+}
+.header__middle-title {
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 103%;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+.header__middle-text {
+  margin-top: 16px;
+  font-family: var(--second-family);
+  font-weight: 400;
+  font-size: 48px;
+  line-height: 1.1;
+}
+.header__middle-author {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  font-family: var(--second-family);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 200%;
+  color: #fff;
+}
+.header__middle-author-line {
+  width: 20px;
+  height: 1px;
+  background: #fff;
+  margin-inline: 10px;
+}
+.header__middle-author-time {
+  margin-left: 4px;
+  font-size: 16px;
+}
+.header__middle-author-social {
+  margin-right: 10px;
+}
+
+main {
+  margin-top: 67px;
+  margin-bottom: 228px;
+  height: 1497px;
+  width: 2005px;
+  display: flex;
+}
+
+.socials {
+  width: 45px;
+  height: 378px;
+  border: 1px solid black;
+  margin-left: 405px;
+}
+
+.maintext {
+  width: 1080px;
+  height: 1497px;
+  border: 1px solid black;
+  margin-left: 70px;
 }
 
 .footer {
   height: 216px;
   background-color: black;
-  margin-top: 128px;
   display: flex;
   padding-top: 88px;
   font-family: var(--second-family);
